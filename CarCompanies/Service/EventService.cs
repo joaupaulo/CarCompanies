@@ -75,8 +75,7 @@ public class EventService : RepositoryBase, IEventService
                 Description = $"Veiculo de placa {licensePlate} atualizado"
             };
             
-            var filter = Builders<Event>.Filter.Eq("LicensePlate", licensePlate);
-            var update = Builders<Event>.Update.Push( x => x.ListEventCompanie,newEventCar);
+            var filter = FilterDefinition(licensePlate, newEventCar, out var update);
             var result = await _repositoryBase.UpdateDocument(_collectionName, filter, update);
 
             return result;
@@ -88,5 +87,10 @@ public class EventService : RepositoryBase, IEventService
         }
     }
 
-    
+    private static FilterDefinition<Event> FilterDefinition(string licensePlate, EventCar newEventCar, out UpdateDefinition<Event> update)
+    {
+        var filter = Builders<Event>.Filter.Eq("LicensePlate", licensePlate);
+        update = Builders<Event>.Update.Push(x => x.ListEventCompanie, newEventCar);
+        return filter;
+    }
 }

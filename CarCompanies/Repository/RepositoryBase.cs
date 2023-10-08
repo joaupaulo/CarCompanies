@@ -47,37 +47,7 @@ public class RepositoryBase : IRepositoryBase
             _logger.LogInformation($"Find done in collection{collectionName}, have find {count}");
         }
     }
-    
-
-    public async Task<List<T>> GetAllDocument<T>(string collectionName)
-    {
-        var count = 0;
-        try
-        {
-            var collection = MongoDatabase.GetCollection<T>(collectionName);
-
-            var filter = new BsonDocument();
-
-            var result = await collection.FindAsync(filter);
-
-            var documents = await result.ToListAsync();
-
-            count = documents.Count;
-
-            return documents;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-
-            throw;
-        }
-        finally
-        {
-            _logger.LogInformation($"Find done in collection{collectionName}, have find {count}");
-        }
-    }
-
+   
     public async Task<List<T>> GetVehicleForModel<T>(string collectionName, string model)
     {
         var count = 0;
