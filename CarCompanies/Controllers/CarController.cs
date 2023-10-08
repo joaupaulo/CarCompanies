@@ -22,47 +22,17 @@ public class VehicleController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet("available")]
-    public async Task<IActionResult> GetAvailableVehicles()
+    [HttpGet("GetVehicle/Model/{modelVehicle}")]
+    public async Task<IActionResult> GetVehicleForModel(string modelVehicle)
     {
         try
         {
-            return Ok();
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "An error occurred while getting available vehicles.");
-            return StatusCode(500, "An error occurred while processing your request.");
-        }
-    }
-
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetVehicle(string id)
-    {
-        try
-        {
-            var vehicle = await _vehicleService.GetVehicleAsync(id);
-            if (vehicle == null) return NotFound();
-            return Ok(vehicle);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "An error occurred while getting the vehicle.");
-            return StatusCode(500, "An error occurred while processing your request.");
-        }
-    }
-    
-    [HttpGet("GetVehicle/Model/{model}")]
-    public async Task<IActionResult> GetVehicleForModel(string model)
-    {
-        try
-        {
-            if (!System.Enum.GetNames(typeof(VehicleModel)).Contains(model))
+            if (!System.Enum.GetNames(typeof(VehicleModel)).Contains(modelVehicle))
             {
-                throw new BusinessException("Choice correct model car");
+                throw new BusinessException("Select another model vehicle, this dont exist!");
             }
             
-            var vehicle = await _vehicleService.GetVehicleForModel(model);
+            var vehicle = await _vehicleService.GetVehicleForModel(modelVehicle);
             if (vehicle == null) return NotFound();
             return Ok(vehicle);
         }
@@ -73,17 +43,17 @@ public class VehicleController : ControllerBase
         }
     }
 
-    [HttpGet("GetVehicle/Plate/{plate}")]
-    public async Task<IActionResult> GetVehicleForPlate(string plate)
+    [HttpGet("GetVehicle/Plate/{plateVehicule}")]
+    public async Task<IActionResult> GetVehicleForPlate(string plateVehicule)
     {
         try
         {
-            if (!IsValidMercosulLicensePlate(plate))
+            if (!_vehicleService.IsValidMercosulLicensePlate(plateVehicule))
             {
-                throw new BusinessException("Plate without mercosul");
+                throw new BusinessException("Write a place with model Mercosul");
             }
 
-            var vehicle = await _vehicleService.GetVehicleForPlate(plate);
+            var vehicle = await _vehicleService.GetVehicleForPlate(plateVehicule);
             if (vehicle == null) return NotFound();
             return Ok(vehicle);
         }
@@ -94,16 +64,16 @@ public class VehicleController : ControllerBase
         }
     }
     
-    [HttpGet("GetVehicle/Status/{status}")]
-    public async Task<IActionResult> GetVehicleForStatus(string status)
+    [HttpGet("GetVehicle/Status/{statusVehicule}")]
+    public async Task<IActionResult> GetVehicleForStatus(string statusVehicule)
     {
         try
         {
-            if (!System.Enum.GetNames(typeof(VehicleStatus)).Contains(status))
+            if (!System.Enum.GetNames(typeof(VehicleStatus)).Contains(statusVehicule))
             {
-                throw new BusinessException("Choice correct model status");
+                throw new BusinessException("Select another status of Vehicle");
             }
-            var vehicle = await _vehicleService.GetVehicleForStatus(status);
+            var vehicle = await _vehicleService.GetVehicleForStatus(statusVehicule);
             if (vehicle == null) return NotFound();
             return Ok(vehicle);
         }
@@ -119,9 +89,11 @@ public class VehicleController : ControllerBase
     {
         try
         {
-            if (vehicle == null) return BadRequest("Invalid input data.");
-            await _vehicleService.CreateVehicleAsync(vehicle);
-            return CreatedAtAction(nameof(GetVehicle), new { id = vehicle.Id }, vehicle);
+            if (vehicle == null) return BadRequest("You are send request null");
+            
+            var result = await _vehicleService.CreateVehicleAsync(vehicle);
+            
+            return Ok(result);
         }
         catch (Exception ex)
         {
@@ -137,7 +109,7 @@ public class VehicleController : ControllerBase
         {
             if (string.IsNullOrWhiteSpace(plate) && string.IsNullOrWhiteSpace(vehicleStatus))
             { 
-              throw new ArgumentNullException("Object null");
+              throw new ArgumentNullException("Fill in all fields");
             }
 
             var existingVehicle = await _vehicleService.GetVehicleForPlate(plate);
@@ -154,29 +126,29 @@ public class VehicleController : ControllerBase
         }
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteVehicle(string plate)
+    [HttpDelete("{plateVehicule}")]
+    public async Task<IActionResult> DeleteVehicle(string plateVehicule)
     {
         try
         {
-            var existingVehicle = await _vehicleService.GetVehicleForPlate(plate);
+            var existingVehicle = await _vehicleService.GetVehicleForPlate(plateVehicule);
            
             if (existingVehicle == null) return NotFound();
             var vehicle =  existingVehicle.First();
            
             if (vehicle.VehicleStatus == VehicleStatus.Rented.ToString())
             {
-                throw new BusinessException("Choice correct model status");
+                throw new BusinessException("You are selecting a rental vehicle");
 
             }
 
             if ((DateTime.Now - vehicle.RegistrationDate).TotalDays > 15)
             {
-                throw new BusinessException("Error date");
+                throw new BusinessException("You are selecting a vehicle that was created more than 15 days ago");
 
             }
             
-            await _vehicleService.DeleteVehicleAsync(plate);
+            await _vehicleService.DeleteVehicleAsync(plateVehicule);
             return NoContent();
         }
         catch (Exception ex)
@@ -184,12 +156,5 @@ public class VehicleController : ControllerBase
             _logger.LogError(ex, "An error occurred while deleting the vehicle.");
             return StatusCode(500, "An error occurred while processing your request.");
         }
-    }
-    
-    static bool IsValidMercosulLicensePlate(string placa)
-    {
-        string pattern = @"^[A-Z]{3}\d{1}[A-Z]\d{2}$";
-
-        return Regex.IsMatch(placa, pattern);
     }
 }

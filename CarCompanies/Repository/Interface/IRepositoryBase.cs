@@ -9,7 +9,6 @@ public interface IRepositoryBase
     Task<T> CreateDocumentAsync<T>(string collectionName, T Document);
     Task<List<T>> GetVehicleForStatus<T>(string collectionName, string status);
     Task<List<T>> GetVehicleForModel<T>(string collectionName, string model);
-    Task<List<T>> GetAllDocument<T>(string collectionName);
     Task<T> GetDocument<T>(string collectionName, string id );
     Task<bool> DeleteDocument<T>(string collectionName, string id);
     Task<bool> UpdateDocument<T>(string collectionName, FilterDefinition<T> filter, UpdateDefinition<T> update);

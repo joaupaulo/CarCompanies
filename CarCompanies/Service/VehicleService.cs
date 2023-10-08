@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Text.RegularExpressions;
 using CarCompanies.Domain;
 using CarCompanies.Domain.Validation;
 using CarCompanies.Repository;
@@ -9,7 +10,7 @@ using MongoDB.Driver;
 
 namespace CarCompanies.Service;
 
-public class VehicleService : RepositoryBase, IVehicle
+public class VehicleService : RepositoryBase, IVehicle 
 {
     private readonly ILogger<VehicleService> _logger;
     private readonly IRepositoryBase _repositoryBase;
@@ -22,31 +23,7 @@ public class VehicleService : RepositoryBase, IVehicle
         _logger = logger;
         _eventService = eventService;
     }
-
-
-    public Task<Vehicle> GetVehicleAsync(string VehicleKey)
-    {
-        try
-        {
-            if (string.IsNullOrWhiteSpace(VehicleKey))
-            {
-                throw new ArgumentNullException();
-            }
-
-            var result = _repositoryBase.GetDocument<Vehicle>(_collectionName, VehicleKey);
-
-            return result;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-        finally
-        {
-            _logger.LogInformation("Finally Get Vehicle with sucess or not");
-        }
-    }
+    
 
     public async Task<List<Vehicle>> GetVehicleForModel(string model)
     {
@@ -62,33 +39,16 @@ public class VehicleService : RepositoryBase, IVehicle
         }
     }
 
-    public async Task<IEnumerable<Vehicle>> GetAllVehiclesAsync()
-    {
-        try
-        {
-            var result = await _repositoryBase.GetAllDocument<Vehicle>(_collectionName);
-            return result;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-        finally
-        {
-            _logger.LogInformation($"Get all vehicle in collection {_collectionName}");
-        }
-    }
 
     public async Task<bool> UpdateVehicleAsync(string vehicleStatus, string licensePlate)
     {
         try
         {
-            var filter = Builders<Vehicle>.Filter.Eq("LicensePlate", licensePlate);
-            var update = Builders<Vehicle>.Update.Set("VehicleStatus", vehicleStatus);
-            var result = await _repositoryBase.UpdateDocument(_collectionName, filter, update);
+            var filter = Filter(vehicleStatus, licensePlate, out var update);
             
-            var a = _eventService.UpdateEventAsync(licensePlate);
+            var result = await _repositoryBase.UpdateDocument(_collectionName, filter, update);
+
+            var updateEventCar = _eventService.UpdateEventAsync(licensePlate);
             
             return result;
         }
@@ -98,30 +58,18 @@ public class VehicleService : RepositoryBase, IVehicle
             throw;
         }
     }
-
+    
     public async Task<Vehicle> CreateVehicleAsync(Vehicle vehicle)
     {
         try
         {
-            if (vehicle == null) throw new NullReferenceException("error data");
+            if (vehicle == null) throw new NullReferenceException("You send object null");
 
             var result = await _repositoryBase.CreateDocumentAsync(_collectionName, vehicle);
 
             if (result != null)
             {
-                Event events = new Event
-                {
-                   LicensePlate = vehicle.LicensePlate,
-                   ListEventCompanie = new List<EventCar>
-                   {
-                    new EventCar
-                    {
-                        DateTime = DateTime.Now,
-                        Description = $"Cadastrando novo veiculo de placa {vehicle.LicensePlate}"
-                    }   
-                   }
-                };
-                _eventService.CreateEventAsync(events);
+                RegisterEventCreate(vehicle);
             }
             
             return result;
@@ -132,7 +80,7 @@ public class VehicleService : RepositoryBase, IVehicle
             throw;
         }
     }
-
+    
     public async Task<bool> DeleteVehicleAsync(string Id)
     {
         try
@@ -175,6 +123,43 @@ public class VehicleService : RepositoryBase, IVehicle
             Console.WriteLine(e);
             throw;
         }
+    }
+    
+    private static FilterDefinition<Vehicle> Filter(string vehicleStatus, string licensePlate, out UpdateDefinition<Vehicle> update)
+    {
+        var filter = FilterDefinition(vehicleStatus, licensePlate, out update);
+        return filter;
+    }
+    
+    private void RegisterEventCreate(Vehicle vehicle)
+    {
+        Event events = new Event
+        {
+            LicensePlate = vehicle.LicensePlate,
+            ListEventCompanie = new List<EventCar>
+            {
+                new EventCar
+                {
+                    DateTime = DateTime.Now,
+                    Description = $"Cadastrando novo veiculo de placa {vehicle.LicensePlate}"
+                }
+            }
+        };
+        _eventService.CreateEventAsync(events);
+    }
+    
+    private static FilterDefinition<Vehicle> FilterDefinition(string vehicleStatus, string licensePlate, out UpdateDefinition<Vehicle> update)
+    {
+        var filter = Builders<Vehicle>.Filter.Eq("LicensePlate", licensePlate);
+        update = Builders<Vehicle>.Update.Set("VehicleStatus", vehicleStatus);
+        return filter;
+    }
+    
+    public bool IsValidMercosulLicensePlate(string placa)
+    {
+        string pattern = @"^[A-Z]{3}\d{1}[A-Z]\d{2}$";
+
+        return Regex.IsMatch(placa, pattern);
     }
     
 }
