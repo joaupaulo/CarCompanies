@@ -47,15 +47,11 @@ public class RepositoryBase : IRepositoryBase
             _logger.LogInformation($"Find done in collection{collectionName}, have find {count}");
         }
     }
-   
-    public async Task<List<T>> GetVehicleForModel<T>(string collectionName, string model)
+   public async Task<List<T>> GetDocument<T>(FilterDefinition<T> filter, string collectionName)
     {
-        var count = 0;
         try
         {
             var collection = MongoDatabase.GetCollection<T>(collectionName);
-
-            FilterDefinition<T> filter = Builders<T>.Filter.Eq("VehicleModel", model);
 
             var result = await collection.Find(filter).ToListAsync();
 
@@ -67,119 +63,9 @@ public class RepositoryBase : IRepositoryBase
 
             throw;
         }
-        finally
-        {
-            _logger.LogInformation($"Find done in collection{collectionName}");
-        }
-
     }
-   
-    public async Task<List<T>> GetVehicleForPlate<T>(string collectionName, string plate)
+   public async Task<bool> UpdateDocument<T>(string collectionName, FilterDefinition<T> filter, UpdateDefinition<T> update) 
     {
-        var count = 0;
-        try
-        {
-            var collection = MongoDatabase.GetCollection<T>(collectionName);
-
-            FilterDefinition<T> filter = Builders<T>.Filter.Eq("LicensePlate", plate);
-
-            var result = await collection.Find(filter).ToListAsync();
-
-            return result;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-
-            throw;
-        }
-        finally
-        {
-            _logger.LogInformation($"Find done in collection{collectionName}");
-        }
-    }
-    
-    public async Task<List<T>> GetVehicleForStatus<T>(string collectionName, string status)
-    {
-        var count = 0;
-        try
-        {
-            var collection = MongoDatabase.GetCollection<T>(collectionName);
-
-            FilterDefinition<T> filter = Builders<T>.Filter.Eq("VehicleStatus", status);
-
-            var result = await collection.Find(filter).ToListAsync();
-
-            return result;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-
-            throw;
-        }
-        finally
-        {
-            _logger.LogInformation($"Find done in collection{collectionName}");
-        }
-    }
-    
-    
-    public async Task<T> GetDocument<T>(string collectionName, string id)
-    {
-        var count = 0;
-        try
-        {
-            var collection = MongoDatabase.GetCollection<T>(collectionName);
-
-            FilterDefinition<T> filter = Builders<T>.Filter.Eq("LicensePlate", id);
-
-            var result = await collection.Find(filter).FirstOrDefaultAsync();
-
-            return result;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-
-            throw;
-        }
-        finally
-        {
-            _logger.LogInformation($"Find done in collection{collectionName}");
-        }
-
-    }
-
-    public async Task<T> GetVehiclePlate<T>(string collectionName, Guid Key)
-    {
-        var count = 0;
-        try
-        {
-            var collection = MongoDatabase.GetCollection<T>(collectionName);
-
-            FilterDefinition<T> filter = Builders<T>.Filter.Eq("EventKey", Key);
-
-            var result = await collection.Find(filter).FirstOrDefaultAsync();
-
-            return result;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-
-            throw;
-        }
-        finally
-        {
-            _logger.LogInformation($"Find done in collection{collectionName}");
-        }
-
-    }
-    
-    public async Task<bool> UpdateDocument<T>(string collectionName, FilterDefinition<T> filter, UpdateDefinition<T> update) 
-    {
-        var count = 0;
         try
         {
             var collection = MongoDatabase.GetCollection<T>(collectionName);
@@ -193,10 +79,6 @@ public class RepositoryBase : IRepositoryBase
             Console.WriteLine(e);
 
             throw;
-        }
-        finally
-        {
-            _logger.LogInformation($"Find done in collection{collectionName}");
         }
     }
    
@@ -216,10 +98,6 @@ public class RepositoryBase : IRepositoryBase
         {
             Console.WriteLine(e);
             throw;
-        }
-        finally
-        {
-            _logger.LogInformation($"Delete done in collection {collectionName}");
         }
     }
 }

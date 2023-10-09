@@ -11,11 +11,13 @@ public class EventService : RepositoryBase, IEventService
 {
     private readonly ILogger<EventService> _logger;
     private readonly IRepositoryBase _repositoryBase;
+    private readonly IEventBsonFilter _eventBsonFilter;
     private readonly string _collectionName = "eventcompanie";
     
-    public EventService(IRepositoryBase repositoryBase, ILogger<EventService> logger) : base(logger)
+    public EventService(IRepositoryBase repositoryBase, ILogger<EventService> logger,IEventBsonFilter eventBsonFilter) : base(logger)
     {
         _repositoryBase = repositoryBase;
+        _eventBsonFilter = eventBsonFilter;
         _logger = logger;
     }
     
@@ -36,7 +38,7 @@ public class EventService : RepositoryBase, IEventService
         }
     } 
     
-    public Task<Event> GetEventAsync(string eventPlateCar)
+    public async Task<Event> GetEventAsync(string eventPlateCar)
     {
         try
         {
@@ -45,23 +47,19 @@ public class EventService : RepositoryBase, IEventService
                 throw new ArgumentNullException();
             }
 
-            var result = _repositoryBase.GetDocument<Event>(_collectionName, eventPlateCar);
-
+            var result = await _repositoryBase.GetDocument<Event>(_collectionName, eventPlateCar);
+            
             if (result == null)
             {
-               
+                throw new ArgumentNullException();
             }
             
-            return result;
+            return result.First();
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
             throw;
-        }
-        finally
-        {
-            _logger.LogInformation("Finally Get Vehicle with sucess or not");
         }
     }
     
@@ -75,7 +73,8 @@ public class EventService : RepositoryBase, IEventService
                 Description = $"Veiculo de placa {licensePlate} atualizado"
             };
             
-            var filter = FilterDefinition(licensePlate, newEventCar, out var update);
+            var filter =  _eventBsonFilter.FilterDefinition(licensePlate, newEventCar, out var update); 
+            
             var result = await _repositoryBase.UpdateDocument(_collectionName, filter, update);
 
             return result;
@@ -85,12 +84,5 @@ public class EventService : RepositoryBase, IEventService
             Console.WriteLine(e);
             throw;
         }
-    }
-
-    private static FilterDefinition<Event> FilterDefinition(string licensePlate, EventCar newEventCar, out UpdateDefinition<Event> update)
-    {
-        var filter = Builders<Event>.Filter.Eq("LicensePlate", licensePlate);
-        update = Builders<Event>.Update.Push(x => x.ListEventCompanie, newEventCar);
-        return filter;
     }
 }

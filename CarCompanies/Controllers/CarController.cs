@@ -134,7 +134,7 @@ public class VehicleController : ControllerBase
             var existingVehicle = await _vehicleService.GetVehicleForPlate(plateVehicule);
            
             if (existingVehicle == null) return NotFound();
-            var vehicle =  existingVehicle.First();
+            var vehicle = existingVehicle;
            
             if (vehicle.VehicleStatus == VehicleStatus.Rented.ToString())
             {
