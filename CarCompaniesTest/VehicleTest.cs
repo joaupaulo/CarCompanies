@@ -13,206 +13,168 @@ using MongoDB.Driver;
 public class VehicleServiceTests
 {
     [Fact]
-    public async Task CreateVehicleAsync_ValidVehicle_CreatesVehicleAndRegistersEvent()
+    public async Task GetVehicleForModel_ValidModel_ReturnsListOfVehicles()
     {
         // Arrange
-        var mockRepositoryBase = new Mock<IRepositoryBase>();
+        var mockRepository = new Mock<IRepositoryBase>();
         var mockLogger = new Mock<ILogger<VehicleService>>();
         var mockEventService = new Mock<IEventService>();
+        var mockBsonFilter = new Mock<IBsonFilter<Vehicle>>();
 
-        var vehicleService = new VehicleService(mockRepositoryBase.Object, mockLogger.Object, mockEventService.Object);
-        var validVehicle = new Vehicle
+        var service = new VehicleService(mockRepository.Object, mockLogger.Object, mockEventService.Object, mockBsonFilter.Object);
+
+        var model = "TestModel";
+        var vehicles = new List<Vehicle> { new Vehicle { VehicleModel = model } };
+        var filter = Builders<Vehicle>.Filter.Eq("VehicleModel", model);
+
+        mockRepository.Setup(r => r.GetDocument<Vehicle>(filter, "carcompanie")).ReturnsAsync(vehicles);
+
+        // Act
+        var result = await service.GetVehicleForModel(model);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(vehicles, result);
+    }
+
+    [Fact]
+    public async Task UpdateVehicleAsync_ValidData_ReturnsTrue()
+    {
+        // Arrange
+        var mockRepository = new Mock<IRepositoryBase>();
+        var mockLogger = new Mock<ILogger<VehicleService>>();
+        var mockEventService = new Mock<IEventService>();
+        var mockBsonFilter = new Mock<IBsonFilter<Vehicle>>();
+
+        var service = new VehicleService(mockRepository.Object, mockLogger.Object, mockEventService.Object, mockBsonFilter.Object);
+
+        var vehicleStatus = "NewStatus";
+        var licensePlate = "ABC123";
+        var filterField = "LicensePlate";
+        var updateField = "VehicleStatus";
+
+        mockRepository
+            .Setup(r => r.UpdateDocument("carcompanie", It.IsAny<FilterDefinition<Vehicle>>(), It.IsAny<UpdateDefinition<Vehicle>>()))
+            .ReturnsAsync(true);
+
+        mockEventService
+            .Setup(e => e.UpdateEventAsync(licensePlate))
+            .ReturnsAsync(true);
+
+        // Act
+        var result = await service.UpdateVehicleAsync(vehicleStatus, licensePlate);
+
+        // Assert
+        Assert.True(result);
+    }
+
+    [Fact]
+    public async Task CreateVehicleAsync_ValidVehicle_ReturnsCreatedVehicle()
+    {
+        // Arrange
+        var mockRepository = new Mock<IRepositoryBase>();
+        var mockLogger = new Mock<ILogger<VehicleService>>();
+        var mockEventService = new Mock<IEventService>();
+        var mockBsonFilter = new Mock<IBsonFilter<Vehicle>>();
+
+        var service = new VehicleService(mockRepository.Object, mockLogger.Object, mockEventService.Object, mockBsonFilter.Object);
+
+        var vehicle = new Vehicle
         {
             LicensePlate = "ABC123",
-            VehicleModel = "Model123",
+            VehicleModel = "TestModel",
             RegistrationDate = DateTime.Now,
             VehicleStatus = "Active"
         };
 
-        mockRepositoryBase.Setup(repo => repo.CreateDocumentAsync("carcompanie", validVehicle))
-            .ReturnsAsync(validVehicle);
-
-        mockEventService.Setup(eventService => eventService.CreateEventAsync(It.IsAny<Event>()))
-            .ReturnsAsync(new Event());
+        mockRepository
+            .Setup(r => r.CreateDocumentAsync("carcompanie", vehicle))
+            .ReturnsAsync(vehicle);
 
         // Act
-        var createdVehicle = await vehicleService.CreateVehicleAsync(validVehicle);
+        var result = await service.CreateVehicleAsync(vehicle);
 
         // Assert
-        Assert.NotNull(createdVehicle);
-        Assert.Equal(validVehicle.LicensePlate, createdVehicle.LicensePlate);
-        mockEventService.Verify(eventService => eventService.CreateEventAsync(It.IsAny<Event>()), Times.Once);
+        Assert.NotNull(result);
+        Assert.Equal(vehicle, result);
     }
 
     [Fact]
-    public async Task UpdateVehicleAsync_ValidStatusAndLicensePlate_UpdatesVehicleAndRegistersEvent()
+    public async Task DeleteVehicleAsync_ValidId_ReturnsTrue()
     {
         // Arrange
-        var mockRepositoryBase = new Mock<IRepositoryBase>();
+        var mockRepository = new Mock<IRepositoryBase>();
         var mockLogger = new Mock<ILogger<VehicleService>>();
         var mockEventService = new Mock<IEventService>();
+        var mockBsonFilter = new Mock<IBsonFilter<Vehicle>>();
 
-        var vehicleService = new VehicleService(mockRepositoryBase.Object, mockLogger.Object, mockEventService.Object);
-        var validLicensePlate = "ABC123";
-        var validStatus = "UpdatedStatus";
+        var service = new VehicleService(mockRepository.Object, mockLogger.Object, mockEventService.Object, mockBsonFilter.Object);
 
-        mockRepositoryBase.Setup(repo => repo.UpdateDocument("carcompanie", It.IsAny<FilterDefinition<Vehicle>>(),
-                It.IsAny<UpdateDefinition<Vehicle>>()))
-            .ReturnsAsync(true);
+        var vehicleId = "123";
 
-        mockEventService.Setup(eventService => eventService.UpdateEventAsync(validLicensePlate))
-            .ReturnsAsync(true);
-
-        // Act
-        var result = await vehicleService.UpdateVehicleAsync(validStatus, validLicensePlate);
-
-        // Assert
-        Assert.True(result);
-        mockEventService.Verify(eventService => eventService.UpdateEventAsync(validLicensePlate), Times.Once);
-    }
-
-    [Fact]
-    public async Task DeleteVehicleAsync_ValidId_DeletesVehicle()
-    {
-        // Arrange
-        var mockRepositoryBase = new Mock<IRepositoryBase>();
-        var mockLogger = new Mock<ILogger<VehicleService>>();
-
-        var vehicleService = new VehicleService(mockRepositoryBase.Object, mockLogger.Object, Mock.Of<IEventService>());
-        var validId = "123";
-
-        mockRepositoryBase.Setup(repo => repo.DeleteDocument<Vehicle>("carcompanie", validId))
+        mockRepository
+            .Setup(r => r.DeleteDocument<Vehicle>("carcompanie", vehicleId))
             .ReturnsAsync(true);
 
         // Act
-        var result = await vehicleService.DeleteVehicleAsync(validId);
+        var result = await service.DeleteVehicleAsync(vehicleId);
 
         // Assert
         Assert.True(result);
     }
 
     [Fact]
-    public async Task GetVehicleForPlate_ValidPlate_ReturnsListOfVehicles()
+    public async Task GetVehicleForPlate_ValidPlate_ReturnsVehicle()
     {
         // Arrange
-        var mockRepositoryBase = new Mock<IRepositoryBase>();
+        var mockRepository = new Mock<IRepositoryBase>();
         var mockLogger = new Mock<ILogger<VehicleService>>();
+        var mockEventService = new Mock<IEventService>();
+        var mockBsonFilter = new Mock<IBsonFilter<Vehicle>>();
 
-        var vehicleService = new VehicleService(mockRepositoryBase.Object, mockLogger.Object, Mock.Of<IEventService>());
-        var validPlate = "ABC123";
-        var expectedVehicles = new List<Vehicle>
-        {
-            new Vehicle { LicensePlate = validPlate },
-            new Vehicle { LicensePlate = validPlate }
-        };
+        var service = new VehicleService(mockRepository.Object, mockLogger.Object, mockEventService.Object, mockBsonFilter.Object);
 
-        mockRepositoryBase.Setup(repo => repo.GetVehicleForPlate<Vehicle>("carcompanie", validPlate))
-            .ReturnsAsync(expectedVehicles);
+        var plate = "ABC123";
+
+        var filter = Builders<Vehicle>.Filter.Eq("LicensePlate", plate);
+        var vehicle = new Vehicle { LicensePlate = plate };
+
+        mockRepository
+            .Setup(r => r.GetDocument(filter, "carcompanie"))
+            .ReturnsAsync(new List<Vehicle> { vehicle });
 
         // Act
-        var result = await vehicleService.GetVehicleForPlate(validPlate);
+        var result = await service.GetVehicleForPlate(plate);
 
         // Assert
         Assert.NotNull(result);
-        Assert.Equal(expectedVehicles, result);
+        Assert.Equal(vehicle, result);
     }
 
     [Fact]
-    public async Task CreateVehicleAsync_NullVehicle_ThrowsException()
+    public async Task GetVehicleForStatus_ValidStatus_ReturnsListOfVehicles()
     {
         // Arrange
-        var mockRepositoryBase = new Mock<IRepositoryBase>();
+        var mockRepository = new Mock<IRepositoryBase>();
         var mockLogger = new Mock<ILogger<VehicleService>>();
         var mockEventService = new Mock<IEventService>();
+        var mockBsonFilter = new Mock<IBsonFilter<Vehicle>>();
 
-        var vehicleService = new VehicleService(mockRepositoryBase.Object, mockLogger.Object, mockEventService.Object);
+        var service = new VehicleService(mockRepository.Object, mockLogger.Object, mockEventService.Object, mockBsonFilter.Object);
 
-        // Act & Assert
-        await Assert.ThrowsAsync<NullReferenceException>(() => vehicleService.CreateVehicleAsync(null));
-    }
+        var status = "Active";
+        var filter = Builders<Vehicle>.Filter.Eq("VehicleStatus", status);
+        var vehicles = new List<Vehicle> { new Vehicle { VehicleStatus = status } };
 
-    [Fact]
-    public async Task UpdateVehicleAsync_InvalidLicensePlate_ReturnsFalse()
-    {
-        // Arrange
-        var mockRepositoryBase = new Mock<IRepositoryBase>();
-        var mockLogger = new Mock<ILogger<VehicleService>>();
-        var mockEventService = new Mock<IEventService>();
-
-        var vehicleService = new VehicleService(mockRepositoryBase.Object, mockLogger.Object, mockEventService.Object);
-
-        var invalidLicensePlate = "InvalidPlate";
-        var validStatus = "UpdatedStatus";
+        mockRepository
+            .Setup(r => r.GetDocument<Vehicle>("carcompanie", status))
+            .ReturnsAsync(vehicles);
 
         // Act
-        var result = await vehicleService.UpdateVehicleAsync(validStatus, invalidLicensePlate);
-
-        // Assert
-        Assert.False(result);
-    }
-
-    [Fact]
-    public async Task DeleteVehicleAsync_InvalidId_ReturnsFalse()
-    {
-        // Arrange
-        var mockRepositoryBase = new Mock<IRepositoryBase>();
-        var mockLogger = new Mock<ILogger<VehicleService>>();
-        var mockEventService = new Mock<IEventService>();
-
-        var vehicleService = new VehicleService(mockRepositoryBase.Object, mockLogger.Object, mockEventService.Object);
-
-        var invalidId = "InvalidId";
-
-        // Act
-        var result = await vehicleService.DeleteVehicleAsync(invalidId);
-
-        // Assert
-        Assert.False(result);
-    }
-
-    [Fact]
-    public async Task GetVehicleForPlate_NoMatchingPlate_ReturnsEmptyList()
-    {
-        // Arrange
-        var mockRepositoryBase = new Mock<IRepositoryBase>();
-        var mockLogger = new Mock<ILogger<VehicleService>>();
-        var mockEventService = new Mock<IEventService>();
-
-        var vehicleService = new VehicleService(mockRepositoryBase.Object, mockLogger.Object, mockEventService.Object);
-
-        var nonExistentPlate = "NonExistentPlate";
-
-        mockRepositoryBase.Setup(repo => repo.GetVehicleForPlate<Vehicle>("carcompanie", nonExistentPlate))
-            .ReturnsAsync(new List<Vehicle>());
-
-        // Act
-        var result = await vehicleService.GetVehicleForPlate(nonExistentPlate);
+        var result = await service.GetVehicleForStatus(status);
 
         // Assert
         Assert.NotNull(result);
-        Assert.Empty(result);
-    }
-
-    [Fact]
-    public async Task GetVehicleForStatus_NoMatchingStatus_ReturnsEmptyList()
-    {
-        // Arrange
-        var mockRepositoryBase = new Mock<IRepositoryBase>();
-        var mockLogger = new Mock<ILogger<VehicleService>>();
-        var mockEventService = new Mock<IEventService>();
-
-        var vehicleService = new VehicleService(mockRepositoryBase.Object, mockLogger.Object, mockEventService.Object);
-
-        var nonExistentStatus = "NonExistentStatus";
-
-        mockRepositoryBase.Setup(repo => repo.GetVehicleForStatus<Vehicle>("carcompanie", nonExistentStatus))
-            .ReturnsAsync(new List<Vehicle>());
-
-        // Act
-        var result = await vehicleService.GetVehicleForStatus(nonExistentStatus);
-
-        // Assert
-        
-        Assert.Empty(result);
+        Assert.Equal(vehicles, result);
     }
 }

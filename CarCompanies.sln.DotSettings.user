@@ -5,5 +5,6 @@
       &lt;TestId&gt;xUnit::C53C2B22-8A7F-4191-AFB7-00AC9FCD182D::net7.0::EventServiceTest.EventServiceTests.CreateEventAsync_ValidEvent_CreatesEvent&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
     &lt;ProjectFile&gt;C53C2B22-8A7F-4191-AFB7-00AC9FCD182D/f:VehicleTest.cs&lt;/ProjectFile&gt;&#xD;
+    &lt;ProjectFile&gt;C53C2B22-8A7F-4191-AFB7-00AC9FCD182D/f:EventTest.cs&lt;/ProjectFile&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
