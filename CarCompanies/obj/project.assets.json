@@ -398,6 +398,48 @@
         "runtime": {
           "lib/net6.0/ZstdSharp.dll": {}
         }
+      },
+      "CarCompanies.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "CarCompanies.Domain": "1.0.0",
+          "CarCompanies.Repository": "1.0.0",
+          "MongoDB.Driver": "2.21.0"
+        },
+        "compile": {
+          "bin/placeholder/CarCompanies.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarCompanies.Core.dll": {}
+        }
+      },
+      "CarCompanies.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "MongoDB.Bson": "2.21.0"
+        },
+        "compile": {
+          "bin/placeholder/CarCompanies.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarCompanies.Domain.dll": {}
+        }
+      },
+      "CarCompanies.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "CarCompanies.Domain": "1.0.0",
+          "MongoDB.Driver": "2.21.0"
+        },
+        "compile": {
+          "bin/placeholder/CarCompanies.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarCompanies.Repository.dll": {}
+        }
       }
     }
   },
@@ -1223,10 +1265,26 @@
         "zstdsharp.port.0.6.2.nupkg.sha512",
         "zstdsharp.port.nuspec"
       ]
+    },
+    "CarCompanies.Core/1.0.0": {
+      "type": "project",
+      "path": "../CarCompanies.Core/CarCompanies.Core.csproj",
+      "msbuildProject": "../CarCompanies.Core/CarCompanies.Core.csproj"
+    },
+    "CarCompanies.Domain/1.0.0": {
+      "type": "project",
+      "path": "../CarCompanies.Domain/CarCompanies.Domain.csproj",
+      "msbuildProject": "../CarCompanies.Domain/CarCompanies.Domain.csproj"
+    },
+    "CarCompanies.Repository/1.0.0": {
+      "type": "project",
+      "path": "../CarCompanies.Repository/CarCompanies.Repository.csproj",
+      "msbuildProject": "../CarCompanies.Repository/CarCompanies.Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "CarCompanies.Core >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 7.0.1",
       "MongoDB.Bson >= 2.21.0",
       "MongoDB.Driver >= 2.21.0",
@@ -1260,7 +1318,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Core\\CarCompanies.Core.csproj": {
+              "projectPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Core\\CarCompanies.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -140,8 +140,9 @@ public class VehicleServiceTests
 
         var filter = Builders<Vehicle>.Filter.Eq("LicensePlate", plate);
         var vehicle = new Vehicle { LicensePlate = plate };
+
+        mockBsonFilter.Setup(f => f.FilterDefinition<Vehicle>("LicensePlate", plate)).Returns(filter);
         
-        mockBsonFilter.Setup(f => f.FilterDefinition<Vehicle>("VehicleModel", plate)).Returns(filter);
         mockRepository
             .Setup(r => r.GetDocument(filter, "carcompanie"))
             .ReturnsAsync(new List<Vehicle> { vehicle });
@@ -165,12 +166,14 @@ public class VehicleServiceTests
 
         var service = new VehicleService(mockRepository.Object, mockLogger.Object, mockEventService.Object, mockBsonFilter.Object);
 
-        var status = "Active";
+        var status = "Available";
         var filter = Builders<Vehicle>.Filter.Eq("VehicleStatus", status);
-        var vehicles = new List<Vehicle> { new Vehicle { VehicleStatus = status } };
+        var vehicles = new List<Vehicle> { new Vehicle { VehicleStatus = "Available" } };
 
+        mockBsonFilter.Setup(f => f.FilterDefinition<Vehicle>("VehicleStatus", status)).Returns(filter);
+        
         mockRepository
-            .Setup(r => r.GetDocument<Vehicle>("carcompanie", status))
+            .Setup(r => r.GetDocument<Vehicle>(filter,"carcompanie"))
             .ReturnsAsync(vehicles);
 
         // Act

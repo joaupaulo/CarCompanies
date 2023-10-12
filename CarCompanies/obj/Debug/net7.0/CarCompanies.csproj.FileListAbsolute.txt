@@ -90,3 +90,9 @@ C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies\obj\Debug\net7.
 C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies\obj\Debug\net7.0\CarCompanies.pdb
 C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies\obj\Debug\net7.0\CarCompanies.genruntimeconfig.cache
 C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies\obj\Debug\net7.0\ref\CarCompanies.dll
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies\bin\Debug\net7.0\CarCompanies.Core.dll
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies\bin\Debug\net7.0\CarCompanies.Domain.dll
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies\bin\Debug\net7.0\CarCompanies.Repository.dll
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies\bin\Debug\net7.0\CarCompanies.Core.pdb
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies\bin\Debug\net7.0\CarCompanies.Domain.pdb
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies\bin\Debug\net7.0\CarCompanies.Repository.pdb
