@@ -26,7 +26,9 @@ public class VehicleServiceTests
         var model = "TestModel";
         var vehicles = new List<Vehicle> { new Vehicle { VehicleModel = model } };
         var filter = Builders<Vehicle>.Filter.Eq("VehicleModel", model);
-
+        
+        mockBsonFilter.Setup(f => f.FilterDefinition<Vehicle>("VehicleModel", model)).Returns(filter);
+        
         mockRepository.Setup(r => r.GetDocument<Vehicle>(filter, "carcompanie")).ReturnsAsync(vehicles);
 
         // Act
@@ -138,7 +140,8 @@ public class VehicleServiceTests
 
         var filter = Builders<Vehicle>.Filter.Eq("LicensePlate", plate);
         var vehicle = new Vehicle { LicensePlate = plate };
-
+        
+        mockBsonFilter.Setup(f => f.FilterDefinition<Vehicle>("VehicleModel", plate)).Returns(filter);
         mockRepository
             .Setup(r => r.GetDocument(filter, "carcompanie"))
             .ReturnsAsync(new List<Vehicle> { vehicle });
