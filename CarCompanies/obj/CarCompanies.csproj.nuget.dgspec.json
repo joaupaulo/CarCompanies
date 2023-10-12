@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JoãoPaulodosSantosSa\\RiderProjects\\CarCompanies\\CarCompanies\\CarCompanies.csproj": {}
+    "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies\\CarCompanies.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JoãoPaulodosSantosSa\\RiderProjects\\CarCompanies\\CarCompanies\\CarCompanies.csproj": {
+    "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies\\CarCompanies.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JoãoPaulodosSantosSa\\RiderProjects\\CarCompanies\\CarCompanies\\CarCompanies.csproj",
+        "projectUniqueName": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies\\CarCompanies.csproj",
         "projectName": "CarCompanies",
-        "projectPath": "C:\\Users\\JoãoPaulodosSantosSa\\RiderProjects\\CarCompanies\\CarCompanies\\CarCompanies.csproj",
+        "projectPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies\\CarCompanies.csproj",
         "packagesPath": "C:\\Users\\JoãoPaulodosSantosSa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JoãoPaulodosSantosSa\\RiderProjects\\CarCompanies\\CarCompanies\\obj\\",
+        "outputPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\JoãoPaulodosSantosSa\\AppData\\Roaming\\NuGet\\NuGet.Config",
