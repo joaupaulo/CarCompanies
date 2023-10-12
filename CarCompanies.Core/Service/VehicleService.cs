@@ -5,6 +5,7 @@ using CarCompanies.Domain.Validation;
 using CarCompanies.Repository;
 using CarCompanies.Repository.Interface;
 using CarCompanies.Service.Interface;
+using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -111,7 +112,7 @@ public class VehicleService : RepositoryBase, IVehicle
         {
             string plateField = "VehicleStatus";
             var filter = _bsonFilter.FilterDefinition<Vehicle>(plateField, status);
-            var result = await _repositoryBase.GetDocument<Vehicle>(_collectionName,status);
+            var result = await _repositoryBase.GetDocument<Vehicle>(filter,_collectionName);
             return result;
         }
         catch (Exception e)

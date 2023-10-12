@@ -1,6 +1,7 @@
 ﻿using CarCompanies.Domain;
 using CarCompanies.Domain.Enum;
 using CarCompanies.Repository.Interface;
+using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
 

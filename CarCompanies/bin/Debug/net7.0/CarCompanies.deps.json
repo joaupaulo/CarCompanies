@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "CarCompanies/1.0.0": {
         "dependencies": {
+          "CarCompanies.Core": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.1",
           "MongoDB.Bson": "2.21.0",
           "MongoDB.Driver": "2.21.0",
@@ -216,6 +217,33 @@
             "fileVersion": "0.6.2.0"
           }
         }
+      },
+      "CarCompanies.Core/1.0.0": {
+        "dependencies": {
+          "CarCompanies.Domain": "1.0.0",
+          "CarCompanies.Repository": "1.0.0",
+          "MongoDB.Driver": "2.21.0"
+        },
+        "runtime": {
+          "CarCompanies.Core.dll": {}
+        }
+      },
+      "CarCompanies.Domain/1.0.0": {
+        "dependencies": {
+          "MongoDB.Bson": "2.21.0"
+        },
+        "runtime": {
+          "CarCompanies.Domain.dll": {}
+        }
+      },
+      "CarCompanies.Repository/1.0.0": {
+        "dependencies": {
+          "CarCompanies.Domain": "1.0.0",
+          "MongoDB.Driver": "2.21.0"
+        },
+        "runtime": {
+          "CarCompanies.Repository.dll": {}
+        }
       }
     }
   },
@@ -399,6 +427,21 @@
       "sha512": "sha512-jPao/LdUNLUz8rn3H1D8W7wQbZsRZM0iayvWI4xGejJg3XJHT56gcmYdgmCGPdJF1UEBqUjucCRrFB+4HbJsbw==",
       "path": "zstdsharp.port/0.6.2",
       "hashPath": "zstdsharp.port.0.6.2.nupkg.sha512"
+    },
+    "CarCompanies.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CarCompanies.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CarCompanies.Repository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
