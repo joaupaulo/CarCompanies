@@ -1511,6 +1511,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "CarCompanies.Core": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.1",
           "MongoDB.Bson": "2.21.0",
           "MongoDB.Driver": "2.21.0",
@@ -1525,6 +1526,48 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "CarCompanies.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "CarCompanies.Domain": "1.0.0",
+          "CarCompanies.Repository": "1.0.0",
+          "MongoDB.Driver": "2.21.0"
+        },
+        "compile": {
+          "bin/placeholder/CarCompanies.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarCompanies.Core.dll": {}
+        }
+      },
+      "CarCompanies.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "MongoDB.Bson": "2.21.0"
+        },
+        "compile": {
+          "bin/placeholder/CarCompanies.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarCompanies.Domain.dll": {}
+        }
+      },
+      "CarCompanies.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "CarCompanies.Domain": "1.0.0",
+          "MongoDB.Driver": "2.21.0"
+        },
+        "compile": {
+          "bin/placeholder/CarCompanies.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarCompanies.Repository.dll": {}
+        }
       }
     }
   },
@@ -5502,6 +5545,21 @@
       "type": "project",
       "path": "../CarCompanies/CarCompanies.csproj",
       "msbuildProject": "../CarCompanies/CarCompanies.csproj"
+    },
+    "CarCompanies.Core/1.0.0": {
+      "type": "project",
+      "path": "../CarCompanies.Core/CarCompanies.Core.csproj",
+      "msbuildProject": "../CarCompanies.Core/CarCompanies.Core.csproj"
+    },
+    "CarCompanies.Domain/1.0.0": {
+      "type": "project",
+      "path": "../CarCompanies.Domain/CarCompanies.Domain.csproj",
+      "msbuildProject": "../CarCompanies.Domain/CarCompanies.Domain.csproj"
+    },
+    "CarCompanies.Repository/1.0.0": {
+      "type": "project",
+      "path": "../CarCompanies.Repository/CarCompanies.Repository.csproj",
+      "msbuildProject": "../CarCompanies.Repository/CarCompanies.Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5522,11 +5580,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\JoãoPaulodosSantosSa\\RiderProjects\\CarCompanies\\CarCompaniesTest\\CarCompaniesTest.csproj",
+      "projectUniqueName": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompaniesTest\\CarCompaniesTest.csproj",
       "projectName": "CarCompaniesTest",
-      "projectPath": "C:\\Users\\JoãoPaulodosSantosSa\\RiderProjects\\CarCompanies\\CarCompaniesTest\\CarCompaniesTest.csproj",
+      "projectPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompaniesTest\\CarCompaniesTest.csproj",
       "packagesPath": "C:\\Users\\JoãoPaulodosSantosSa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\JoãoPaulodosSantosSa\\RiderProjects\\CarCompanies\\CarCompaniesTest\\obj\\",
+      "outputPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompaniesTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\JoãoPaulodosSantosSa\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5544,8 +5602,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\JoãoPaulodosSantosSa\\RiderProjects\\CarCompanies\\CarCompanies\\CarCompanies.csproj": {
-              "projectPath": "C:\\Users\\JoãoPaulodosSantosSa\\RiderProjects\\CarCompanies\\CarCompanies\\CarCompanies.csproj"
+            "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies\\CarCompanies.csproj": {
+              "projectPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies\\CarCompanies.csproj"
             }
           }
         }

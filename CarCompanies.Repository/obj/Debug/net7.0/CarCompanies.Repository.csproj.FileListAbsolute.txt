@@ -1,0 +1,15 @@
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\obj\Debug\net7.0\CarCompanies.Repository.csproj.AssemblyReference.cache
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\obj\Debug\net7.0\CarCompanies.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\obj\Debug\net7.0\CarCompanies.Repository.AssemblyInfoInputs.cache
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\obj\Debug\net7.0\CarCompanies.Repository.AssemblyInfo.cs
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\obj\Debug\net7.0\CarCompanies.Repository.csproj.CoreCompileInputs.cache
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\bin\Debug\net7.0\CarCompanies.Repository.deps.json
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\bin\Debug\net7.0\CarCompanies.Repository.dll
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\bin\Debug\net7.0\CarCompanies.Repository.pdb
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\bin\Debug\net7.0\CarCompanies.Domain.dll
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\bin\Debug\net7.0\CarCompanies.Domain.pdb
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\obj\Debug\net7.0\CarCompanies.Repository.csproj.CopyComplete
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\obj\Debug\net7.0\CarCompanies.Repository.dll
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\obj\Debug\net7.0\refint\CarCompanies.Repository.dll
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\obj\Debug\net7.0\CarCompanies.Repository.pdb
+C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Repository\obj\Debug\net7.0\ref\CarCompanies.Repository.dll

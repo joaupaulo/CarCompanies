@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NgjT05SfZj5/oKSdX8NErV+UxnwTm2D7RwDRIdbJMBXmgpSGZSGYPzQ3JXSuiwaq6Sl4kzZgumKSDiTr0XYnvg==",
+  "dgSpecHash": "nKHA76GfylPSYxelQemOo7gn3gxSYbZPi/GbxedU8jh0ZpYhcooRZcdTRqE6cao1SXZTMoBuHevAJ7X0j4ruiA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\JoãoPaulodosSantosSa\\RiderProjects\\CarCompanies\\CarCompanies\\CarCompanies.csproj",
+  "projectFilePath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies\\CarCompanies.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\JoãoPaulodosSantosSa\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\JoãoPaulodosSantosSa\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

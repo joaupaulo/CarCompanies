@@ -3,6 +3,7 @@ using CarCompanies.Domain.Validation;
 using CarCompanies.Repository;
 using CarCompanies.Repository.Interface;
 using CarCompanies.Service.Interface;
+using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 
 namespace CarCompanies.Service;
