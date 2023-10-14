@@ -18,7 +18,7 @@ jobs:
 
        - name: Create
          run: |
-           mkdir -p $GITHUB_WORKSPACE/app/_meta
+           mkdir -p $GITHUB_WORKSPACE/carcompanies/_meta
          
        - name: Update SHA
          run:  echo $GITHUB_SHA > $GITHUB_WORKSPACE/carcompanies/_meta
