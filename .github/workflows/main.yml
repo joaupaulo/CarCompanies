@@ -18,7 +18,8 @@ jobs:
 
 
        - name: Update SHA
-         run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/carcompanies/_meta
+         run: |
+           mkdir echo $GITHUB_SHA > $GITHUB_WORKSPACE/carcompanies/_meta
          
          
        - name: Build image
