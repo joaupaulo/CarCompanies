@@ -25,7 +25,7 @@ spec:
           - name: test-deploy-container
             image: <IMAGE>
             securityContext:
-              priviliged: true
+              privileged: true
             ports:
               - name: http
                 containerPort: 80
@@ -43,15 +43,13 @@ kind: Service
 metadata:
  name: car-companie-deployment
  labels:
-    app: car-companie-deployment          
+    app: car-companie-deployment
 spec:
   type: LoadBalancer
-    ports:
-      - name : http
-        protocol: TCP
-        port: 80
-        targetPort: 5000
-    selector:
-       app: car-companie-deployment
-  
-                                   
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 5000
+  selector:
+    app: car-companie-deployment
