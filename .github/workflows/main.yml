@@ -1,0 +1,62 @@
+name: DeployDigitalOcean
+
+on:
+    pull_request:
+      branches:
+        - develop
+        - staging
+        - master
+
+jobs:
+  build:
+    name: build and deploy
+    runs-on: ubuntu-latest
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@v2
+
+       - name: Create _meta directory
+         run: mkdir -p $GITHUB_WORKSPACE/_meta
+   
+       - name: Set SHA
+         id: set_sha
+         run: |
+           echo "::set-output name=sha::$(git rev-parse HEAD)"
+         shell: bash
+   
+       - name: Write SHA to File
+         run: |
+           echo ${{ steps.set_sha.outputs.sha }} > $GITHUB_WORKSPACE/_meta/commit_sha.txt
+         shell: bash
+   
+       - name: Display SHA
+         run: cat $GITHUB_WORKSPACE/_meta/commit_sha.txt
+
+         
+       - name: Build image
+         run: docker build -t registry.digitalocean.com/test-deploy-container/carcompanies:$(echo $GITHUB_SHA | head -c7) .
+
+       - name: Instal doctl
+         uses: digitalocean/action-doctl@v2
+         with:
+          token: ${{ secrets.DIGITALOCEAN_TOKEN }}
+
+       - name: Login docker
+         run: doctl registry login --expiry-seconds 600 
+        
+       - name: Push Image
+         run: docker push registry.digitalocean.com/test-deploy-container/carcompanies:$(echo $GITHUB_SHA | head -c7)
+
+       - name: Update deploy file
+         run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/test-deploy-container/carcompanies:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment.yml
+
+       - name: save config cluster
+         run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 k8s-1-28-test
+
+       - name: Deploy
+         run: kubectl apply -f $GITHUB_WORKSPACE/config/deployment.yml
+       
+       
+
+
