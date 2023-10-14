@@ -15,6 +15,9 @@ jobs:
     steps:
        - name: Checkout
          uses: actions/checkout@v2
+
+       - name: Create _meta directory
+         run: mkdir -p $GITHUB_WORKSPACE/_meta
    
        - name: Set SHA
          id: set_sha
