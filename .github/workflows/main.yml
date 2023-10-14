@@ -15,6 +15,21 @@ jobs:
     steps:
        - name: Checkout
          uses: actions/checkout@v2
+
+       - name: Set SHA
+         id: set_sha
+         run: |
+           echo "::set-output name=sha::$(git rev-parse HEAD)"
+         shell: bash
+   
+       - name: Write SHA to File
+         run: |
+           echo ${{ steps.set_sha.outputs.sha }} > $GITHUB_WORKSPACE/_meta/commit_sha.txt
+         shell: bash
+   
+       - name: Display SHA
+         run: cat $GITHUB_WORKSPACE/_meta/commit_sha.txt
+
          
        - name: Build image
          run: docker build -t registry.digitalocean.com/test-deploy-container/carcompanies:$(echo $GITHUB_SHA | head -c7) .
