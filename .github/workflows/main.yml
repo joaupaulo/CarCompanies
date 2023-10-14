@@ -15,10 +15,6 @@ jobs:
     steps:
        - name: Checkout
          uses: actions/checkout@v2
-
-         
-       - name: Update SHA
-         run:  echo $GITHUB_SHA > $GITHUB_WORKSPACE/carcompanies/_meta
          
        - name: Build image
          run: docker build -t registry.digitalocean.com/test-deploy-container/carcompanies:$(echo $GITHUB_SHA | head -c7) .
