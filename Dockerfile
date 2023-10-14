@@ -11,13 +11,12 @@ RUN dotnet publish "CarCompanies.csproj" -c Release -o /app/publish
 
 FROM nginx:alpine
 
-COPY config/nginx.conf /etc/nginx/conf.d/default.conf
+COPY config/nginx.conf /etc/nginx/nginx.conf
+COPY config/default.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=publish /app/publish /usr/share/nginx/html
 
 EXPOSE 80
 EXPOSE 443
-
-ENV ASPNETCORE_ENVIRONMENT=Production
 
 CMD ["nginx", "-g", "daemon off;"]
