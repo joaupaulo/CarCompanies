@@ -1,0 +1,26 @@
+name: DeployDigitalOcean
+
+on:
+    pull_request:
+      branches:
+        - develop
+        - staging
+        - master
+
+jobs:
+  build:
+    name: build and deploy
+    runs-on: ubuntu-latest
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@v2
+
+
+       - name: Update SHA
+         run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/app/_meta
+         
+         
+       - name: Build image
+         run: docker build -t registry.digitalocean.com/test-deploy-container/CarCompanies:$(echo $GITHUB_SHA | head -c7) .
+
