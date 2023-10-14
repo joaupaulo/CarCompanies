@@ -13,8 +13,6 @@ FROM nginx:alpine
 
 COPY config/nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY config/custom.conf /etc/nginx/conf.d/custom.conf
-
 COPY --from=publish /app/publish /usr/share/nginx/html
 
 EXPOSE 80
