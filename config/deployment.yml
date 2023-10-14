@@ -10,11 +10,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-     app: car-companie-deployment
+      app: car-companie-deployment
   strategy:
     rollingUpdate:
-       maxSurge: 1
-       maxUnavailable: 1
+      maxSurge: 1
+      maxUnavailable: 1
     minReadySeconds: 5
     template:
       metadata:
@@ -27,14 +27,15 @@ spec:
             securityContext:
               priviliged: true
             ports:
-            - name: http
-              containerPort: 80
-              hostPort: 80
+              - name: http
+                containerPort: 80
+                hostPort: 80
             resources:
               requests:
-                 cpu: 100m
+                cpu: 100m
               limits:
-                 cpu: 100m
+                cpu: 100m
+
 ---
 
 apiVersion: v1
