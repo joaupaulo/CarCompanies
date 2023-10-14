@@ -12,7 +12,8 @@ RUN dotnet publish "CarCompanies.csproj" -c Release -o /app/publish
 FROM nginx:alpine
 
 COPY config/nginx.conf /etc/nginx/conf.d/default.conf
-
+     config/custom.conf /etc/nginx/custom.conf
+     
 COPY --from=publish /app/publish /usr/share/nginx/html
 
 EXPOSE 80
