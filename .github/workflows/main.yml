@@ -16,10 +16,12 @@ jobs:
        - name: Checkout
          uses: actions/checkout@v2
 
-
-       - name: Update SHA
+       - name: Create
          run: |
-           mkdir echo $GITHUB_SHA > $GITHUB_WORKSPACE/carcompanies/_meta
+           mkdir -p $GITHUB_WORKSPACE/app/_meta
+         
+       - name: Update SHA
+         run:  echo $GITHUB_SHA > $GITHUB_WORKSPACE/carcompanies/_meta
          
          
        - name: Build image
