@@ -39,7 +39,7 @@ spec:
 ---
 
 apiVersion: v1
-king: Service
+kind: Service
 metadata:
   name: car-companie-deployment
 spec:
