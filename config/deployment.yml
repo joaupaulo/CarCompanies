@@ -28,10 +28,9 @@ metadata:
   labels:
     app: carcompanies-deployment
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - port: 443
     targetPort: 443
   selector: 
      app: carcompanies-deployment
-     
