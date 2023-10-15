@@ -44,7 +44,7 @@ metadata:
   name: car-companie-ingress
 spec:
   rules:
-    - host:  
+    - host:  app-minha.app.com
       http:
         paths:
           - pathType: Prefix
