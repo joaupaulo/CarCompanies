@@ -1,10 +1,10 @@
 # *Aplicação .NET Web Api*
 ## *Aplicação responsável por simular uma locadora de veículos.*
-*Endpoints da aplicação*
-*Podemos realizar o cadastro de veículos*
-*Cadastras eventos que aconteceram com os veículos*
-*Bucas eventos que ocorreram com os veículos*
-*Buscar carros por Placas,Modelos e Status do veículo*
+- *Endpoints da aplicação*
+- *Podemos realizar o cadastro de veículos*
+- *Cadastras eventos que aconteceram com os veículos*
+- *Bucas eventos que ocorreram com os veículos*
+- *Buscar carros por Placas,Modelos e Status do veículo*
 
 <img width="948" alt="image" src="https://github.com/joaupaulo/CarCompanies/assets/61383712/607f2818-d2b3-445c-b8d3-4746d8ab70c2">
 
