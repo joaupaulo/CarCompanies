@@ -35,3 +35,20 @@ spec:
   selector: 
      app: carcompanies-deployment
 
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: carcompanies-ingress
+spec:
+  rules:
+  - host: api.carcompaniew.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: carcompanies-deployment
+            port:
+              number: 80
