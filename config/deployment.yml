@@ -23,16 +23,31 @@ spec:
 ---
 apiVersion: v1
 kind: Service
-metadata: 
+metadata:
   name: carcompanies-deployment
-  labels:
-    app: carcompanies-deployment
 spec:
-  type: LoadBalancer
+  selector:
+    app: carcompanies-deployment
   ports:
-  - protocol: TCP 
-    port: 80
-    targetPort: 30000
-  selector: 
-     app: carcompanies-deployment
+    - protocol: TCP
+      port: 80
+      targetPort: 30000
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name:  carcompanies-deployment
+spec:
+  rules:
+  - host:  carcompanies-deployment.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: carcompanies-deployment
+            port:
+              number: 80
 
