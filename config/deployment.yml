@@ -38,6 +38,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: carcompanies-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
     - host: my.carcompanie.com
