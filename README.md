@@ -20,6 +20,9 @@
 - Container Registry
 - DDD
 - Swagger
+- Fluxo GitFlow
+- xUnit
+- Moq
 
 # Oque foi feito em Devops ?  
  [*Realizada configuração do CI/CD para o DigitalOcean*](https://github.com/joaupaulo/CarCompanies/blob/master/.github/workflows/main.yml)
