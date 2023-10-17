@@ -24,44 +24,30 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: carcompanies-service
+  name: carcompanies-deployment
 spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
   selector:
     app: carcompanies-deployment
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: carcompanies-ingress
+  name: carcompanies-ingresss
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
-    - host: my.carcompanie.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: carcompanies-service
-                port:
-                  number: 80
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: carcompanies-loadbalancer
-spec:
-  selector:
-    app: carcompanies-deployment
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-  type: LoadBalancer
+  - host: carcompanies-deployment.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: carcompanies-deployment
+            port:
+              number: 80
