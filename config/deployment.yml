@@ -41,7 +41,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: mycarcompanie.com   
+  - host: carcompanies-deployment   
     http:
       paths:
       - pathType: Prefix
