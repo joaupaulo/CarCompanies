@@ -28,7 +28,6 @@ public class RepositoryBase : IRepositoryBase
     
    public async Task<T> CreateDocumentAsync<T>(string collectionName, T document)
     {
-        var count = 0;
         try
         {
             var collection = MongoDatabase.GetCollection<T>(collectionName);
@@ -37,15 +36,11 @@ public class RepositoryBase : IRepositoryBase
 
              return document;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
+            _logger.LogError(ex, "An error occurred while create the vehicle.");
 
             throw;
-        }
-        finally
-        {
-            _logger.LogInformation($"Find done in collection{collectionName}, have find {count}");
         }
     }
    public async Task<List<T>> GetDocument<T>(FilterDefinition<T> filter, string collectionName)
@@ -58,9 +53,9 @@ public class RepositoryBase : IRepositoryBase
 
             return result;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
+            _logger.LogError(ex, "An error occurred while getting the vehicle.");
 
             throw;
         }
@@ -75,9 +70,9 @@ public class RepositoryBase : IRepositoryBase
 
             return result.ModifiedCount > 0;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
+            _logger.LogError(ex, "An error occurred while update the vehicle.");
 
             throw;
         }
@@ -95,9 +90,9 @@ public class RepositoryBase : IRepositoryBase
 
             return result.DeletedCount > 0;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
+            _logger.LogError(ex, "An error occurred while delete the vehicle.");
             throw;
         }
     }
