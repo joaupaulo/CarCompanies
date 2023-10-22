@@ -60,7 +60,7 @@ Services :
 
 Ingresses  :
 
-<img width="683" alt="image" src="https://github.com/joaupaulo/CarCompanies/assets/61383712/ac0b5555-6b8a-472e-86f5-af00b9574b25">
+<img width="814" alt="image" src="https://github.com/joaupaulo/CarCompanies/assets/61383712/8689915e-730f-4e0d-a5df-8808d60b811d">
 
 
 
