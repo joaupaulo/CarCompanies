@@ -40,8 +40,8 @@ metadata:
 spec:
   selector:
     app: carcompanies-deployment
-      ports: 443
-      protocol: TCP
+   ports:
+    - protocol: TCP
       port: 80
       targetPort: 80
   type: LoadBalancer

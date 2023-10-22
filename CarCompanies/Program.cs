@@ -28,12 +28,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-if (app.Environment.IsProduction())
-{
-    Console.WriteLine("Ta batendo tudo");
-}
-
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
