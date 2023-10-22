@@ -35,9 +35,10 @@ public class VehicleService : RepositoryBase, IVehicle
             return result;
 
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
+            _logger.LogError(ex, "An error occurred while getting the vehicle.");
+
             throw;
         }
     }
@@ -45,7 +46,6 @@ public class VehicleService : RepositoryBase, IVehicle
     {
         try
         {
-            //var filter = Filter(vehicleStatus, licensePlate, out var update);
             var filterField = "LicensePlate";
             var updateField = "VehicleStatus";
             var filter = _bsonFilter.FilterDefinitionUpdate(filterField, licensePlate,updateField,vehicleStatus, out UpdateDefinition<Vehicle> update );
@@ -55,9 +55,9 @@ public class VehicleService : RepositoryBase, IVehicle
             
             return result;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
+            _logger.LogError(ex, "An error occurred while update the vehicle.");
             throw;
         }
     }
@@ -71,9 +71,9 @@ public class VehicleService : RepositoryBase, IVehicle
             
             return result;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
+            _logger.LogError(ex, "An error occurred while create the vehicle.");
             throw;
         }
     }
@@ -85,9 +85,9 @@ public class VehicleService : RepositoryBase, IVehicle
 
             return result;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
+            _logger.LogError(ex, "An error occurred while delete the vehicle.");
             throw;
         }
     }
@@ -100,9 +100,9 @@ public class VehicleService : RepositoryBase, IVehicle
             var result = await _repositoryBase.GetDocument(filter, _collectionName);
             return result.First();
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
+            _logger.LogError(ex, "An error occurred while getting vehicle for plate.");
             throw;
         }
     }
@@ -115,9 +115,9 @@ public class VehicleService : RepositoryBase, IVehicle
             var result = await _repositoryBase.GetDocument<Vehicle>(filter,_collectionName);
             return result;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
+            _logger.LogError(ex, "An error occurred while getting vehicle for status.");
             throw;
         }
     }
