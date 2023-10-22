@@ -1,10 +1,10 @@
 # *Aplicação .NET Web Api*
 ## *Aplicação responsável por simular uma locadora de veículos.*
-*Endpoints da aplicação*
-*Podemos realizar o cadastro de veículos*
-*Cadastras eventos que aconteceram com os veículos*
-*Bucas eventos que ocorreram com os veículos*
-*Buscar carros por Placas,Modelos e Status do veículo*
+- *Endpoints da aplicação*
+- *Podemos realizar o cadastro de veículos*
+- *Cadastras eventos que aconteceram com os veículos*
+- *Bucas eventos que ocorreram com os veículos*
+- *Buscar carros por Placas,Modelos e Status do veículo*
 
 <img width="948" alt="image" src="https://github.com/joaupaulo/CarCompanies/assets/61383712/607f2818-d2b3-445c-b8d3-4746d8ab70c2">
 
@@ -20,9 +20,6 @@
 - Container Registry
 - DDD
 - Swagger
-- Fluxo GitFlow
-- xUnit
-- Moq
 
 # Oque foi feito em Devops ?  
  [*Realizada configuração do CI/CD para o DigitalOcean*](https://github.com/joaupaulo/CarCompanies/blob/master/.github/workflows/main.yml)
@@ -60,7 +57,7 @@ Services :
 
 Ingresses  :
 
-<img width="814" alt="image" src="https://github.com/joaupaulo/CarCompanies/assets/61383712/8689915e-730f-4e0d-a5df-8808d60b811d">
+<img width="814" alt="image" src="https://github.com/joaupaulo/CarCompanies/assets/61383712/8fcedcb4-283b-4d69-9330-05567bbb22d2">
 
 
 

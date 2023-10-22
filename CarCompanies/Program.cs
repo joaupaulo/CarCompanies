@@ -18,6 +18,7 @@ builder.Services.AddTransient<IRepositoryBase, RepositoryBase>();
 builder.Services.AddTransient<IEventService, EventService>();
 builder.Services.AddScoped(typeof(IBsonFilter<>),typeof(BsonFilter<>));
 builder.Services.AddTransient<IEventBsonFilter, EventBsonFilter>();
+builder.Services.AddHttpsRedirection(x => x.HttpsPort = 80);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

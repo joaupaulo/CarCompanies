@@ -32,9 +32,9 @@ public class EventService : RepositoryBase, IEventService
 
             return result;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
+            _logger.LogError(ex, "An error occurred while create the vehicle.");
             throw;
         }
     } 
@@ -45,7 +45,7 @@ public class EventService : RepositoryBase, IEventService
         {
             if (string.IsNullOrWhiteSpace(eventPlateCar))
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("content is empty");
             }
 
             var result = await _repositoryBase.GetDocument<Event>(_collectionName, eventPlateCar);
@@ -57,9 +57,9 @@ public class EventService : RepositoryBase, IEventService
             
             return result.First();
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
+            _logger.LogError(ex, "An error occurred while getting the vehicle.");
             throw;
         }
     }
@@ -71,7 +71,7 @@ public class EventService : RepositoryBase, IEventService
             var newEventCar = new EventCar
             {
                 DateTime = DateTime.Now,
-                Description = $"Veiculo de placa {licensePlate} atualizado"
+                Description = $"update {licensePlate} plate vehicle"
             };
             
             var filter =  _eventBsonFilter.FilterDefinition(licensePlate, newEventCar, out var update); 
@@ -80,9 +80,9 @@ public class EventService : RepositoryBase, IEventService
 
             return result;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
+            _logger.LogError(ex, "An error occurred while update the vehicle.");
             throw;
         }
     }
