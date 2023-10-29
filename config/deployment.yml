@@ -53,7 +53,8 @@ spec:
             name: carcompanies-deployment
             port:
               number: 80
-tls:
+  tls:
   - hosts:
     - "k8s.simplewebapi.shop"
-    secretName: letsencrypt-tls              
+    secretName: letsencrypt-tls
+         
