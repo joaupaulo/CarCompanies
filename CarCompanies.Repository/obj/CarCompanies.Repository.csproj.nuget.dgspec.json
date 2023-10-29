@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Repository\\CarCompanies.Repository.csproj": {}
+    "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies.Repository\\CarCompanies.Repository.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Domain\\CarCompanies.Domain.csproj": {
+    "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies.Domain\\CarCompanies.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Domain\\CarCompanies.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies.Domain\\CarCompanies.Domain.csproj",
         "projectName": "CarCompanies.Domain",
-        "projectPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Domain\\CarCompanies.Domain.csproj",
-        "packagesPath": "C:\\Users\\JoãoPaulodosSantosSa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Domain\\obj\\",
+        "projectPath": "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies.Domain\\CarCompanies.Domain.csproj",
+        "packagesPath": "C:\\Users\\João Paulo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\JoãoPaulodosSantosSa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\João Paulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,8 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.pkg.github.com/tag-trade-repository/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -62,21 +61,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Repository\\CarCompanies.Repository.csproj": {
+    "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies.Repository\\CarCompanies.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Repository\\CarCompanies.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies.Repository\\CarCompanies.Repository.csproj",
         "projectName": "CarCompanies.Repository",
-        "projectPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Repository\\CarCompanies.Repository.csproj",
-        "packagesPath": "C:\\Users\\JoãoPaulodosSantosSa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Repository\\obj\\",
+        "projectPath": "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies.Repository\\CarCompanies.Repository.csproj",
+        "packagesPath": "C:\\Users\\João Paulo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\JoãoPaulodosSantosSa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\João Paulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -84,15 +83,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.pkg.github.com/tag-trade-repository/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Domain\\CarCompanies.Domain.csproj": {
-                "projectPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Domain\\CarCompanies.Domain.csproj"
+              "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies.Domain\\CarCompanies.Domain.csproj": {
+                "projectPath": "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies.Domain\\CarCompanies.Domain.csproj"
               }
             }
           }
@@ -128,7 +126,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

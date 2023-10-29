@@ -10,3 +10,15 @@ C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Domain\obj\Debu
 C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Domain\obj\Debug\net7.0\refint\CarCompanies.Domain.dll
 C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Domain\obj\Debug\net7.0\CarCompanies.Domain.pdb
 C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Domain\obj\Debug\net7.0\ref\CarCompanies.Domain.dll
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Domain\bin\Debug\net7.0\CarCompanies.Domain.deps.json
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Domain\bin\Debug\net7.0\CarCompanies.Domain.dll
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Domain\bin\Debug\net7.0\CarCompanies.Domain.pdb
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Domain\obj\Debug\net7.0\CarCompanies.Domain.csproj.AssemblyReference.cache
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Domain\obj\Debug\net7.0\CarCompanies.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Domain\obj\Debug\net7.0\CarCompanies.Domain.AssemblyInfoInputs.cache
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Domain\obj\Debug\net7.0\CarCompanies.Domain.AssemblyInfo.cs
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Domain\obj\Debug\net7.0\CarCompanies.Domain.csproj.CoreCompileInputs.cache
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Domain\obj\Debug\net7.0\CarCompanies.Domain.dll
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Domain\obj\Debug\net7.0\refint\CarCompanies.Domain.dll
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Domain\obj\Debug\net7.0\CarCompanies.Domain.pdb
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Domain\obj\Debug\net7.0\ref\CarCompanies.Domain.dll
