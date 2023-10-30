@@ -53,7 +53,7 @@ spec:
             name: carcompanies-deployment
             port:
               number: 80
-   tls:
+  tls:
   - hosts:
     - "k8s.eusouodaniel.com"
     secretName: letsencrypt-tls
