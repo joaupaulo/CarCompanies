@@ -39,7 +39,8 @@ metadata:
   name: carcompanies-ingresss
   annotations:
     kubernetes.io/ingress.class: nginx
-
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   rules:
   - host: k8s.simplewebapi.shop
@@ -52,4 +53,7 @@ spec:
             name: carcompanies-deployment
             port:
               number: 80
- 
+   tls:
+  - hosts:
+    - "k8s.eusouodaniel.com"
+    secretName: letsencrypt-tls
