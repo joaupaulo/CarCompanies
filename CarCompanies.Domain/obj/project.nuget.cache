@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "DNczZpJJMt6dFHP5sHIznCBc3k2RELO1eSYIiuDzIKzkybwjBR/qItQmbXhEeTzCOdYfbAk+bbaj7DZzOjcP5Q==",
+  "dgSpecHash": "KfpGD/4kM8jU8d23+Du0KbVMzfa4PdulNAzL/hIbYKGDT5QW4OlecNng3xbvWQwE9WwrxkieboOIJJZiuSR6Lw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies.Domain\\CarCompanies.Domain.csproj",
+  "projectFilePath": "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies.Domain\\CarCompanies.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\JoãoPaulodosSantosSa\\.nuget\\packages\\mongodb.bson\\2.21.0\\mongodb.bson.2.21.0.nupkg.sha512",
-    "C:\\Users\\JoãoPaulodosSantosSa\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
-    "C:\\Users\\JoãoPaulodosSantosSa\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+    "C:\\Users\\João Paulo\\.nuget\\packages\\mongodb.bson\\2.21.0\\mongodb.bson.2.21.0.nupkg.sha512",
+    "C:\\Users\\João Paulo\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\João Paulo\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

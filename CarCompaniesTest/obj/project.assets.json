@@ -5575,19 +5575,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JoãoPaulodosSantosSa\\.nuget\\packages\\": {}
+    "C:\\Users\\João Paulo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompaniesTest\\CarCompaniesTest.csproj",
+      "projectUniqueName": "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompaniesTest\\CarCompaniesTest.csproj",
       "projectName": "CarCompaniesTest",
-      "projectPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompaniesTest\\CarCompaniesTest.csproj",
-      "packagesPath": "C:\\Users\\JoãoPaulodosSantosSa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompaniesTest\\obj\\",
+      "projectPath": "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompaniesTest\\CarCompaniesTest.csproj",
+      "packagesPath": "C:\\Users\\João Paulo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompaniesTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\JoãoPaulodosSantosSa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\João Paulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5595,15 +5595,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.pkg.github.com/tag-trade-repository/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies\\CarCompanies.csproj": {
-              "projectPath": "C:\\Users\\JoãoPaulodosSantosSa\\Desktop\\CarCompanies\\CarCompanies\\CarCompanies.csproj"
+            "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies\\CarCompanies.csproj": {
+              "projectPath": "C:\\Users\\João Paulo\\Desktop\\Meus projetos\\CarCompanies\\CarCompanies\\CarCompanies.csproj"
             }
           }
         }
@@ -5663,7 +5662,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

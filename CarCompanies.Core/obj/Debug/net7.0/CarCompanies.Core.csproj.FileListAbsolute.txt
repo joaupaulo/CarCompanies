@@ -15,3 +15,20 @@ C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Core\obj\Debug\
 C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Core\obj\Debug\net7.0\refint\CarCompanies.Core.dll
 C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Core\obj\Debug\net7.0\CarCompanies.Core.pdb
 C:\Users\JoãoPaulodosSantosSa\Desktop\CarCompanies\CarCompanies.Core\obj\Debug\net7.0\ref\CarCompanies.Core.dll
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\bin\Debug\net7.0\CarCompanies.Core.deps.json
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\bin\Debug\net7.0\CarCompanies.Core.dll
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\bin\Debug\net7.0\CarCompanies.Core.pdb
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\bin\Debug\net7.0\CarCompanies.Domain.dll
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\bin\Debug\net7.0\CarCompanies.Repository.dll
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\bin\Debug\net7.0\CarCompanies.Domain.pdb
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\bin\Debug\net7.0\CarCompanies.Repository.pdb
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\obj\Debug\net7.0\CarCompanies.Core.csproj.AssemblyReference.cache
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\obj\Debug\net7.0\CarCompanies.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\obj\Debug\net7.0\CarCompanies.Core.AssemblyInfoInputs.cache
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\obj\Debug\net7.0\CarCompanies.Core.AssemblyInfo.cs
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\obj\Debug\net7.0\CarCompanies.Core.csproj.CoreCompileInputs.cache
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\obj\Debug\net7.0\CarCompanies.Core.csproj.CopyComplete
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\obj\Debug\net7.0\CarCompanies.Core.dll
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\obj\Debug\net7.0\refint\CarCompanies.Core.dll
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\obj\Debug\net7.0\CarCompanies.Core.pdb
+C:\Users\João Paulo\Desktop\Meus projetos\CarCompanies\CarCompanies.Core\obj\Debug\net7.0\ref\CarCompanies.Core.dll
